@@ -6,6 +6,14 @@ import time
 csv_filename = input('Output filename: ')
 minimum_count = input('Minimum tag count (> 50 is preferable): ')
 dashes = input('replace \'_\' with \'-\'? (often better for prompt following) (Y/n): ')
+exclude = input('enter categories to exclude: (general,artist,copyright,character,post) (press enter for none): \n')
+
+excluded = ""
+excluded += "0" if "general" in exclude else ""
+excluded += "1" if "artist" in exclude else ""
+excluded += "3" if "copyright" in exclude else ""
+excluded += "4" if "character" in exclude else ""
+excluded += "5" if "post" in exclude else ""
 
 kaomojis = [
     "0_0", "(o)_(o)", "+_+", "+_-", "._.", "<o>_<o>", "<|>_<|>", "=_=", ">_<",
@@ -16,6 +24,7 @@ if not '.csv' in csv_filename:
     csv_filename += '.csv'
 
 if dashes.lower != 'n':
+    print()
     dashes = 'y'
     csv_filename += '-temp'
 
@@ -53,7 +62,8 @@ with open(csv_filename, mode='w', newline='', encoding='utf-8') as file:
                     if int(item['post_count']) < int(minimum_count): # break if below minimum count
                         file.flush()
                         raise Complete
-                    writer.writerow([item['name'],item['category'],item['post_count'],''])
+                    if not str(item['category']) in excluded:
+                        writer.writerow([item['name'],item['category'],item['post_count'],''])
 
                 # Explicitly flush the data to the file
                 file.flush()
