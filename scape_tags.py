@@ -23,8 +23,7 @@ kaomojis = [
 if not '.csv' in csv_filename:
     csv_filename += '.csv'
 
-if dashes.lower != 'n':
-    print()
+if not 'n' in dashes.lower():
     dashes = 'y'
     csv_filename += '-temp'
 
