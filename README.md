@@ -11,12 +11,13 @@ Main Changes:
 - Uses the UI's expected formatting
 - Slightly faster rate limit
 - Ability to exclude tag categories
+- The option to include aliases (UI support varies)
 
 About the uploaded list:
 
-I uploaded my own list generated using the script for convenience. The minimum threshold was 50 and '-' formatting was enabled. I may or may not update this list when I feel enough time has passed, probably not until a model with newer data is released.
+I uploaded my own list generated using the script for convenience. The minimum threshold was 50, '-' formatting and aliases were enabled. I may or may not update this list when I feel enough time has passed, probably not until a model with newer data is released.
 
 The format is as follows:
 
-|tag|category|post count|filler column(required for compatibility)|
+|tag|category|post count|aliases(if enabled)|
 |---|--------|----------|-----------------------------------------|
